@@ -1,14 +1,15 @@
 .model small
 .stack 100h
 .data
-   msg db 'Enter the line number(0-9) : $'
+   msg1 db 'Enter the line number(0-9) : $' 
+   msg2 db 'The right aligned triangle by * is : $'
 .code
 main proc 
     mov ax,@data
     mov ds,ax
     
     mov ah,9
-    lea dx,msg
+    lea dx,msg1
     int 21h
     
     mov ah,1
@@ -21,7 +22,18 @@ main proc
     mov dl,13
     int 21h
     mov dl,10
+    int 21h 
+    
+    mov ah,9
+    lea dx,msg2
     int 21h
+    
+    mov ah,2
+    mov dl,13
+    int 21h
+    mov dl,10
+    int 21h  
+    
     
     next_line:
         mov bh,ch
@@ -56,5 +68,8 @@ main proc
     main endp
 end main
     
+
+
+
 
 
